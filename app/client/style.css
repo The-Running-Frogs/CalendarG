@@ -1,0 +1,60 @@
+.landing-background {
+    background: url("images/landing.jpg");
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-top: -50px;
+}
+
+#login-button, #login-password, #login-username {
+    margin-left: 5px;
+}
+
+#navbar-text {
+    color: lightgray;
+    font-size: 10pt;
+}
+
+#navbar-text-container {
+    padding-top: 5px;
+    padding-left: 225px;
+}
+
+#signup-text {
+    text-align: center;
+    color: gray;
+}
+
+#signup-text a {
+    text-decoration: underline;
+}
+
+:root {
+    --space: 1.5em 0;
+    --space: 2em 0;
+}
+
+.Site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.Site-content {
+    background: whitesmoke;
+    flex: 1 0 auto;
+    padding: var(--space) var(--space) 0;
+    padding-top: 50px;
+    width: 100%;
+}
+
+.Site-content:after {
+    content: '\00a0';
+    display: block;
+    margin-top: var(--space);
+    height: 0;
+    visibility: hidden;
+}
+
+.footer-background {
+    background-color: #DFDFE0;
+}
