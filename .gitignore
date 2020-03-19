@@ -2,5 +2,5 @@ node_modules/
 *.iml
 .idea
 .DS_Store
-./config/settings.production.json
-./config/settings.development.json
+config/settings.production.json
+config/settings.development.json
