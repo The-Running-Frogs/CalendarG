@@ -12,6 +12,7 @@
     "core-js": "^3.6.4",
     "graphql": "^14.6.0",
     "meteor-node-stubs": "^0.4.1",
+    "minimist": "^1.2.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-addons-pure-render-mixin": "^15.6.2",
