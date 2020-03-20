@@ -22,42 +22,6 @@ class Landing extends React.Component {
                     <h1>Welcome to CalendarG</h1>
                     <p>Now get to work and modify this app!</p>
                    <DynamicDescriptionMenu/>
-                      {/*
-                      <Segment>
-                        <Grid columns={2} relaxed='very'>
-                          <Grid.Column>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                          </Grid.Column>
-                          <Grid.Column>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                          </Grid.Column>
-                        </Grid>
-
-                        <Divider vertical>And</Divider>
-                      </Segment>
-                      */}
                 </Grid.Column>
 
             </Grid>
