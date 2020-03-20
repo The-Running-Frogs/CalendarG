@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Profiles } from '/imports/api/profiles/Profiles';
-import PropTypes from "prop-types";
 
 Accounts.emailTemplates.siteName = "calendarG";
 Accounts.emailTemplates.from     = "Frog Admin <therunningfrogs.biz@gmail.com>";
