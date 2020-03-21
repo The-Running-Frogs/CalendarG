@@ -24,7 +24,7 @@ class App extends React.Component {
                 <Switch>
                     <Route exact path="/" component={Landing}/>
                     <Route path="/register" component={Signup}/>
-                    <Route path='/verify-email/:token' component={VerifyEmail}/>
+                    <Route exact path='/verify-email/:token' component={VerifyEmail}/>
                     <Route path="/home" component={(props) => {
                         const isLogged = Meteor.userId() !== null;
                         return isLogged ?
@@ -32,7 +32,7 @@ class App extends React.Component {
                             (<Redirect to={{ pathname: '/', state: { from: props.location } }}/>
                             );
                     }}/>
-                    <ProtectedRoute path="/signout" component={(props) => {
+                    <Route path="/signout" component={(props) => {
                         const isLogged = Meteor.userId() !== null;
                         return isLogged ?
                             (<Signout {...props} />) :

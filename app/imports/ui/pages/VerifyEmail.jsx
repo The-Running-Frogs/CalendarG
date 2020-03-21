@@ -1,7 +1,8 @@
 import React from 'react'
+import { Meteor } from 'meteor/meteor';
 import Accounts from 'meteor/accounts-base'
 
-export default class VerifyEmailPage extends React.Component {
+export default class VerifyEmail extends React.Component {
 
     componentDidMount () {
         const token = this.props.match.params.token;
@@ -17,7 +18,7 @@ export default class VerifyEmailPage extends React.Component {
 
     render () {
         return (
-            <div>{''}</div>
+            Meteor.user().emails[ 0 ].verified ? <div>Success</div> : <div>Failed</div>
         )
     }
 }
