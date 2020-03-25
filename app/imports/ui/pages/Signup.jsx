@@ -110,7 +110,7 @@ class Signup extends React.Component {
         const isNotLogged = Meteor.userId() === null || Meteor.user() === undefined;
         if (!isNotLogged) {
             if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
-                return (<Redirect to={{ pathname: '/request-admin' }}/>); // If user is an admin
+                return (<Redirect to={{ pathname: '/admin-home' }}/>); // If user is an admin
             }
             return (<Redirect to={{ pathname: '/home' }}/>); // If user is a regular user
         }

@@ -39,7 +39,7 @@ class UserHome extends React.Component {
             if (Meteor.userId()) {
                 Meteor.call('changeEmail', email, (error, response) => {
                     if (error) {
-                        this.setState({success: '', error: 'Unable to change email.'});
+                        this.setState({success: '', error: 'Email already exists.'});
                     }
                     else {
                         this.resend();
@@ -76,7 +76,9 @@ class UserHome extends React.Component {
                                 </Header>
                                 <Segment>
                                     <Form onSubmit={this.submit}>
-                                        {this.state.error === 'Email already exists.' ? (
+                                        {this.state.error === 'Email already exists.' ||
+                                            this.state.error === 'Email that was entered is already associated with your account.'
+                                            ? (
                                             <Form.Input
                                                 required
                                                 error
