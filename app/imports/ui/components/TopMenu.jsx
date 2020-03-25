@@ -150,8 +150,7 @@ class TopMenu extends React.Component {
                         <Message warning style={verifyMessageStyle}>
                             <Message.Header>Verify your email address: {Meteor.user().emails[0].address}</Message.Header>
                             <Message.Content>
-                                Check your email for verification link in order to use calendarG. If email was
-                                inputted incorrectly, you may change and resend email down below.
+                                Check your email for verification link in order to use calendarG.
                             </Message.Content>
                         </Message>
                     )
