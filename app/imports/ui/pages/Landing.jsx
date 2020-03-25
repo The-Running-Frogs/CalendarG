@@ -1,17 +1,18 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Divider, Grid, Image, Segment } from 'semantic-ui-react';
-import {Redirect} from "react-router";
+import { Grid } from 'semantic-ui-react';
+import { Redirect } from "react-router";
+import { withTracker } from 'meteor/react-meteor-data';
 import DynamicDescriptionMenu from '../components/DynamicDescriptionMenu';
+import PropTypes from "prop-types";
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
     render() {
         /* Check if user is logged in before loading page, if so redirect to correct home page */
-        const isNotLogged = Meteor.userId() === null || Meteor.user() === undefined;
-        if (!isNotLogged) {
+        if (!(this.props.currentUser === '')) {
             if (Roles.userIsInRole(Meteor.userId(), 'admin')) { // If user is an admin
-                return (<Redirect to={{ pathname: '/request-admin' }}/>);
+                return (<Redirect to={{ pathname: '/admin-home' }}/>);
             }
             return (<Redirect to={{ pathname: '/home' }}/>); // If user is regular user
         }
@@ -22,42 +23,6 @@ class Landing extends React.Component {
                     <h1>Welcome to CalendarG</h1>
                     <p>Now get to work and modify this app!</p>
                    <DynamicDescriptionMenu/>
-                      {/*
-                      <Segment>
-                        <Grid columns={2} relaxed='very'>
-                          <Grid.Column>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                          </Grid.Column>
-                          <Grid.Column>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                            <p>
-                              <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-                            </p>
-                          </Grid.Column>
-                        </Grid>
-
-                        <Divider vertical>And</Divider>
-                      </Segment>
-                      */}
                 </Grid.Column>
 
             </Grid>
@@ -65,6 +30,21 @@ class Landing extends React.Component {
     }
 }
 
-export default Landing;
+/** Declare the types of all properties. */
+Landing.propTypes = {
+    currentUser: PropTypes.string,
+    location: PropTypes.object,
+    ready: PropTypes.bool.isRequired,
+};
+
+export default withTracker(() => {
+    const subscription = Meteor.subscribe('Profiles');
+
+    return {
+        ready: subscription.ready(),
+        currentUser: Meteor.user() ? Meteor.user().username : '',
+    };
+})(Landing);
+
 
 
