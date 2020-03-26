@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import VerifyEmail from '../pages/VerifyEmail';
 import UserHome from '../pages/UserHome';
+import AccountSettings from '../pages/AccountSettings';
 import Signup from '../pages/Signup';
 import NotFound from '../pages/NotFound';
 import Signout from '../pages/Signout';
@@ -29,6 +30,13 @@ class App extends React.Component {
                         const isLogged = Meteor.userId() !== null;
                         return isLogged ?
                             (<UserHome {...props} />) :
+                            (<Redirect to={{ pathname: '/', state: { from: props.location } }}/>
+                            );
+                    }}/>
+                    <Route path="/settings" component={(props) => {
+                        const isLogged = Meteor.userId() !== null;
+                        return isLogged ?
+                            (<AccountSettings {...props} />) :
                             (<Redirect to={{ pathname: '/', state: { from: props.location } }}/>
                             );
                     }}/>
