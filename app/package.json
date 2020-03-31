@@ -24,15 +24,15 @@
     "semantic-ui-react": "^0.88.2",
     "simpl-schema": "^1.5.7",
     "sweetalert": "^2.1.2",
-    "uniforms": "^2.6.6",
-    "uniforms-bridge-simple-schema-2": "^2.6.6",
-    "uniforms-semantic": "^2.6.6"
+    "uniforms": "^2.6.7",
+    "uniforms-bridge-simple-schema-2": "^2.6.7",
+    "uniforms-semantic": "^2.6.7"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
-    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-meteor": "^6.0.0",
     "eslint-plugin-react": "^7.19.0",
