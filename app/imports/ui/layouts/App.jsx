@@ -13,6 +13,8 @@ import AccountSettings from '../pages/AccountSettings';
 import Signup from '../pages/Signup';
 import NotFound from '../pages/NotFound';
 import Signout from '../pages/Signout';
+import ChangeEmail from "../pages/ChangeEmail";
+import ChangePassword from "../pages/ChangePassword";
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -47,6 +49,8 @@ class App extends React.Component {
                             (<Redirect to={{ pathname: '/', state: { from: props.location } }}/>
                             );
                     }}/>
+                    <Route path="/changepw" component={ChangePassword}/>
+                    <Route path="/changeem" component={ChangeEmail}/>
                     <Route component={NotFound}/>
                 </Switch>
             </div>
