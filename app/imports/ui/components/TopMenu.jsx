@@ -120,7 +120,7 @@ class TopMenu extends React.Component {
 
     /** Display the TopMenu Navigation bar **/
     render() {
-        const menuStyle = { paddingLeft: '50px', paddingRight: '50px', paddingTop: '5px',
+        const menuStyle = { paddingLeft: '50px', paddingRight: '50px', paddingTop: '0px',
             backgroundColor: 'mediumpurple' };
         const loginMessageStyle = { marginTop: "0px" };
         const verifyMessageStyle = { marginTop: "0px", marginBottom: "-15px" };

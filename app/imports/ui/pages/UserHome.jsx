@@ -14,7 +14,7 @@ class UserHome extends React.Component {
     /** Initialize state fields. */
     constructor(props) {
         super(props);
-        this.state = { email: '', success: '', error: '' };
+        this.state = { email: '', confirm_email: '', success: '', error: '' };
     }
 
     resend = () => {
@@ -31,9 +31,12 @@ class UserHome extends React.Component {
     };
 
     submit = () => {
-        const { email } = this.state;
+        const { email, confirm_email } = this.state;
         if (email === Meteor.user().emails[0].address) {
             this.setState({success: '', error: 'Email that was entered is already associated with your account.'});
+        }
+        else if (!(email === confirm_email)) {
+            this.setState({success: '', error: 'In order to change email, emails must match.'});
         }
         else {
             if (Meteor.userId()) {
@@ -96,6 +99,26 @@ class UserHome extends React.Component {
                                                 onChange={this.handleChange}
                                             />
                                         )}
+                                        {this.state.email === this.state.confirm_email ||
+                                        this.state.confirm_email === ''
+                                            ? (
+                                                <Form.Input
+                                                    required
+                                                    name="confirm_email"
+                                                    type="email"
+                                                    label="Confirm New E-mail Address"
+                                                    onChange={this.handleChange}
+                                                />
+                                            ) : (
+                                                <Form.Input
+                                                    required
+                                                    error
+                                                    name="confirm_email"
+                                                    type="email"
+                                                    label="Confirm New E-mail Address"
+                                                    onChange={this.handleChange}
+                                                />
+                                            )}
                                         <Form.Button fluid color="purple" content="Change E-mail"/>
                                     </Form>
                                     <Divider horizontal>Or</Divider>
