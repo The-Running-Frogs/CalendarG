@@ -5,6 +5,7 @@
     "@babel/runtime": "^7.9.2",
     "@fullcalendar/core": "^4.4.0",
     "@fullcalendar/daygrid": "^4.4.0",
+    "@fullcalendar/interaction": "^4.4.0",
     "@fullcalendar/react": "^4.4.0",
     "@fullcalendar/timegrid": "^4.4.0",
     "bcrypt": "^4.0.1",
@@ -39,8 +40,9 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "eslint-utils": "^2.0.0",
     "node-sass": "^4.13.1",
+    "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "webpack": "^4.42.1"
+    "webpack": "^4.43.0"
   },
   "scripts": {
     "start": "meteor --no-release-check --settings ../config/settings.development.json",

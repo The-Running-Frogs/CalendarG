@@ -3,11 +3,15 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import {Loader, Menu, Grid, Image, Container, Form, Segment, Header, Button, Message, Divider} from 'semantic-ui-react';
+import {Loader, Menu, Grid, Container, Form, Segment, Header, Button, Message, Divider} from 'semantic-ui-react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 import { Accounts } from 'meteor/accounts-base';
 import { Profiles } from '/imports/api/profiles/Profiles';
+
+//import 'app/client/main.scss';
 
 class UserHome extends React.Component {
 
@@ -56,6 +60,14 @@ class UserHome extends React.Component {
     /** Update the form controls each time the user interacts with them. */
     handleChange = (e, { name, value }) => {
         this.setState({ [name]: value });
+    };
+
+    calendarComponentRef = React.createRef();
+    state = {
+        calendarWeekends: true,
+        calendarEvents: [ // initial event data
+            { title: 'Event Now', start: new Date() }
+        ]
     };
 
     render() {
@@ -172,7 +184,23 @@ class UserHome extends React.Component {
                                 </Menu>
                             </Grid.Column>
                             <Grid.Column floated="left">
-                                <Image src="https://blankcalendarpages.com/printable_calendar/blank/February-2020-calendar-b12.jpg"/>
+                                <div className='demo-app'>
+                                    <div className='demo-app-calendar'>
+                                        <FullCalendar
+                                            defaultView="dayGridMonth"
+                                            header={{
+                                                left: 'prev,next today',
+                                                center: 'title',
+                                                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                                            }}
+                                            plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
+                                            ref={ this.calendarComponentRef }
+                                            weekends={ this.state.calendarWeekends }
+                                            events={ this.state.calendarEvents }
+                                            dateClick={ this.handleDateClick }
+                                        />
+                                    </div>
+                                </div>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
@@ -183,6 +211,18 @@ class UserHome extends React.Component {
             return (<Loader active>Loading</Loader>);
         }
     }
+
+    handleDateClick = (arg) => {
+        if (confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
+            this.setState({  // add new event data
+                calendarEvents: this.state.calendarEvents.concat({ // creates a new array
+                    title: 'New Event',
+                    start: arg.date,
+                    allDay: arg.allDay
+                })
+            })
+        }
+    };
 
 }
 
