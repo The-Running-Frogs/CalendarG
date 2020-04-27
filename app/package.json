@@ -9,7 +9,7 @@
     "@fullcalendar/timegrid": "^4.4.0",
     "bcrypt": "^4.0.1",
     "classnames": "^2.2.6",
-    "core-js": "^3.6.4",
+    "core-js": "^3.6.5",
     "graphql": "^14.6.0",
     "meteor-node-stubs": "^0.4.1",
     "minimist": "^1.2.5",
@@ -22,25 +22,25 @@
     "react-router-dom": "^5.1.2",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2",
-    "simpl-schema": "^1.5.7",
+    "simpl-schema": "^1.6.2",
     "sweetalert": "^2.1.2",
-    "uniforms": "^2.6.6",
-    "uniforms-bridge-simple-schema-2": "^2.6.6",
-    "uniforms-semantic": "^2.6.6"
+    "uniforms": "^2.6.7",
+    "uniforms-bridge-simple-schema-2": "^2.6.7",
+    "uniforms-semantic": "^2.6.7"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
-    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-meteor": "^6.0.0",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "eslint-utils": "^2.0.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.0",
     "sass-loader": "^8.0.2",
-    "webpack": "^4.42.1"
+    "webpack": "^4.43.0"
   },
   "scripts": {
     "start": "meteor --no-release-check --settings ../config/settings.development.json",
