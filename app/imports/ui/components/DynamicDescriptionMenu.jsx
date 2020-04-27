@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Grid, Segment, Menu } from 'semantic-ui-react'
+import { Grid, Segment, Menu, Container } from 'semantic-ui-react'
 
 export default class DynamicDescriptionMenu extends Component {
 
-    state = { activeItem: 'What is this?' }
+    state = { activeItem: 'What is calendarG?' }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -16,23 +16,13 @@ export default class DynamicDescriptionMenu extends Component {
                 <Grid.Column width={4}>
                     <Menu fluid vertical tabular pointing>
                         <Menu.Item
-                            name = 'What is this?'
-                            active={activeItem === 'What is this?'}
+                            name = 'What is calendarG?'
+                            active={activeItem === 'What is calendarG?'}
                             onClick={this.handleItemClick}
                         />
                         <Menu.Item
                             name = 'Get Started'
                             active={activeItem === 'Get Started'}
-                            onClick={this.handleItemClick}
-                        />
-                        <Menu.Item
-                            name = 't'
-                            active={activeItem === 't'}
-                            onClick={this.handleItemClick}
-                        />
-                        <Menu.Item
-                            name = 's'
-                            active={activeItem === 's'}
                             onClick={this.handleItemClick}
                         />
                     </Menu>
@@ -47,7 +37,7 @@ export default class DynamicDescriptionMenu extends Component {
 
 
 const RenderedContent = ({ tabName, format }) => {
-    if (tabName === 'What is this?') {
+    if (tabName === 'What is calendarG?') {
         return <WhatIsThis format={format}/>
     }
     if (tabName === 'Get Started') {
@@ -63,19 +53,21 @@ const WhatIsThis = ({format}) => (
         <p>CalendarG is a web tool developed by The Running Frogs to help its users stay organized and on top of things with an online Calendar interface. Every user gets their own account that they can use to establish a calendar and schedule for themselves.</p>
         <p>The interface will be something familiar to those who have used services such as Google Calendars before and aims to be simple enough for intuitive use to those less familiar with those types of products as well!</p>
 
-        <Grid padded centered columns={1}>
+        <Container style={{ paddingLeft: '100px' }}>
+        <Grid padded centered columns={2}>
             <Grid.Row centered columns={3}>
                 <Grid.Column>
-                    <Segment color='teal' inverted circular style={format}>Easy</Segment>
+                    <Segment color='grey' inverted circular style={format}>Easy</Segment>
                 </Grid.Column>
                 <Grid.Column>
-                    <Segment color='teal' inverted circular style={format}>Tidy</Segment>
+                    <Segment color='grey' inverted circular style={format}>Tidy</Segment>
                 </Grid.Column>
                 <Grid.Column>
-                    <Segment color='teal' inverted circular style={format}>Fun</Segment>
+                    <Segment color='grey' inverted circular style={format}>Fun</Segment>
                 </Grid.Column>
              </Grid.Row>
         </Grid>
+        </Container>
     </Segment>
 );
 
