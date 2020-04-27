@@ -5,8 +5,8 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import {Loader, Grid, Container, Form, Segment, Header, Button, Message, Divider} from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
+import Scheduler from "../components/Scheduler/";
 import { Profiles } from '/imports/api/profiles/Profiles';
-import '../../../client/main.scss';
 
 class UserHome extends React.Component {
 
@@ -150,9 +150,18 @@ class UserHome extends React.Component {
             }
             else { // If the user's email is verified and is logged in, go to their home page
                 return (
-                    <Grid>
-
-                    </Grid>
+                    <Container>
+                        <Grid padded>
+                            <Grid.Row>
+                                <Header as="h1" content="My Calendar"/>
+                            </Grid.Row>
+                            <Grid.Row centered>
+                                <div className='scheduler-container'>
+                                    <Scheduler/>
+                                </div>
+                            </Grid.Row>
+                        </Grid>
+                    </Container>
                 );
             }
         }
