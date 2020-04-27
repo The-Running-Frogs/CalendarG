@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import {Loader, Menu, Grid, Image, Container, Form, Segment, Header, Button, Message, Divider} from 'semantic-ui-react';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
+import {Loader, Grid, Container, Form, Segment, Header, Button, Message, Divider} from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
+import Scheduler from "../components/Scheduler/";
 import { Profiles } from '/imports/api/profiles/Profiles';
 
 class UserHome extends React.Component {
@@ -14,7 +13,7 @@ class UserHome extends React.Component {
     /** Initialize state fields. */
     constructor(props) {
         super(props);
-        this.state = { email: '', success: '', error: '' };
+        this.state = { email: '', confirm_email: '', success: '', error: '' };
     }
 
     resend = () => {
@@ -31,9 +30,12 @@ class UserHome extends React.Component {
     };
 
     submit = () => {
-        const { email } = this.state;
+        const { email, confirm_email } = this.state;
         if (email === Meteor.user().emails[0].address) {
             this.setState({success: '', error: 'Email that was entered is already associated with your account.'});
+        }
+        else if (!(email === confirm_email)) {
+            this.setState({success: '', error: 'In order to change email, emails must match.'});
         }
         else {
             if (Meteor.userId()) {
@@ -96,6 +98,26 @@ class UserHome extends React.Component {
                                                 onChange={this.handleChange}
                                             />
                                         )}
+                                        {this.state.email === this.state.confirm_email ||
+                                        this.state.confirm_email === ''
+                                            ? (
+                                                <Form.Input
+                                                    required
+                                                    name="confirm_email"
+                                                    type="email"
+                                                    label="Confirm New E-mail Address"
+                                                    onChange={this.handleChange}
+                                                />
+                                            ) : (
+                                                <Form.Input
+                                                    required
+                                                    error
+                                                    name="confirm_email"
+                                                    type="email"
+                                                    label="Confirm New E-mail Address"
+                                                    onChange={this.handleChange}
+                                                />
+                                            )}
                                         <Form.Button fluid color="purple" content="Change E-mail"/>
                                     </Form>
                                     <Divider horizontal>Or</Divider>
@@ -127,32 +149,19 @@ class UserHome extends React.Component {
                 );
             }
             else { // If the user's email is verified and is logged in, go to their home page
-                const sideMenuStyle = { padding: "5px" };
                 return (
-                    <Grid padded columns={2}>
-                        <Grid.Row>
-                            <Grid.Column floated="left" width={1}>
-                                <Menu style={sideMenuStyle} vertical>
-                                    <Menu.Item>
-                                        <Menu.Header>Categories</Menu.Header>
-                                        <Menu.Menu>
-                                            <Menu.Item>
-                                                <input type="checkbox" id="category1" name="category1"/>
-                                                <label htmlFor="category1">  Category 1</label>
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                <input type="checkbox" id="category2" name="category2"/>
-                                                <label htmlFor="category2">  Category 2</label>
-                                            </Menu.Item>
-                                        </Menu.Menu>
-                                    </Menu.Item>
-                                </Menu>
-                            </Grid.Column>
-                            <Grid.Column floated="left">
-                                <Image src="https://blankcalendarpages.com/printable_calendar/blank/February-2020-calendar-b12.jpg"/>
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
+                    <Container>
+                        <Grid padded>
+                            <Grid.Row>
+                                <Header as="h1" content="My Calendar"/>
+                            </Grid.Row>
+                            <Grid.Row centered>
+                                <div className='scheduler-container'>
+                                    <Scheduler/>
+                                </div>
+                            </Grid.Row>
+                        </Grid>
+                    </Container>
                 );
             }
         }

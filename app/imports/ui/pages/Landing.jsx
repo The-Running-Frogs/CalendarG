@@ -21,7 +21,8 @@ class Landing extends React.Component {
         return (
             <Grid verticalAlign='middle' textAlign='center' container>
                 <Grid.Column width={16}>
-                    <Image style={imageStyle} src='/images/calendarG_horizontal.png' size="large" centered/>
+                    <h1>Welcome to CalendarG</h1>
+                    <p>Now get to work and modify this app!</p>
                    <DynamicDescriptionMenu/>
                 </Grid.Column>
 
