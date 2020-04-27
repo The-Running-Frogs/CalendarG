@@ -3,7 +3,7 @@ import { Grid, Segment, Menu, Container } from 'semantic-ui-react'
 
 export default class DynamicDescriptionMenu extends Component {
 
-    state = { activeItem: 'What is calendarG?' }
+    state = { activeItem: 'About' };
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -16,8 +16,8 @@ export default class DynamicDescriptionMenu extends Component {
                 <Grid.Column width={4}>
                     <Menu fluid vertical tabular pointing>
                         <Menu.Item
-                            name = 'What is calendarG?'
-                            active={activeItem === 'What is calendarG?'}
+                            name = 'About'
+                            active={activeItem === 'About'}
                             onClick={this.handleItemClick}
                         />
                         <Menu.Item
@@ -37,7 +37,7 @@ export default class DynamicDescriptionMenu extends Component {
 
 
 const RenderedContent = ({ tabName, format }) => {
-    if (tabName === 'What is calendarG?') {
+    if (tabName === 'About') {
         return <WhatIsThis format={format}/>
     }
     if (tabName === 'Get Started') {
@@ -50,7 +50,7 @@ const WhatIsThis = ({format}) => (
 
     <Segment centered raised padded>
 
-        <p>CalendarG is a web tool developed by The Running Frogs to help its users stay organized and on top of things with an online Calendar interface. Every user gets their own account that they can use to establish a calendar and schedule for themselves.</p>
+        <p>calendarG is a web tool developed by The Running Frogs to help its users stay organized and on top of things with an online Calendar interface. Every user gets their own account that they can use to establish a calendar and schedule for themselves.</p>
         <p>The interface will be something familiar to those who have used services such as Google Calendars before and aims to be simple enough for intuitive use to those less familiar with those types of products as well!</p>
 
         <Container style={{ paddingLeft: '100px' }}>

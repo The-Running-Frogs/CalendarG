@@ -21,8 +21,7 @@ class Landing extends React.Component {
         return (
             <Grid verticalAlign='middle' textAlign='center' container>
                 <Grid.Column width={16}>
-                    <h1>Welcome to CalendarG</h1>
-                    <p>Now get to work and modify this app!</p>
+                    <h1>Welcome to calendarG!</h1>
                    <DynamicDescriptionMenu/>
                 </Grid.Column>
 
