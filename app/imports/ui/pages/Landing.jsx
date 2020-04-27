@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Image } from 'semantic-ui-react';
 import { Redirect } from "react-router";
 import { withTracker } from 'meteor/react-meteor-data';
 import DynamicDescriptionMenu from '../components/DynamicDescriptionMenu';
@@ -17,11 +17,11 @@ class Landing extends React.Component {
             return (<Redirect to={{ pathname: '/home' }}/>); // If user is regular user
         }
         /* Else print the landing page */
+        const imageStyle = { paddingBottom: '50px' };
         return (
             <Grid verticalAlign='middle' textAlign='center' container>
                 <Grid.Column width={16}>
-                    <h1>Welcome to CalendarG</h1>
-                    <p>Now get to work and modify this app!</p>
+                    <Image style={imageStyle} src='/images/calendarG_horizontal.png' size="large" centered/>
                    <DynamicDescriptionMenu/>
                 </Grid.Column>
 

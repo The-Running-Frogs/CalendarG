@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Input, Button, Message, Container } from 'semantic-ui-react';
+import { Menu, Dropdown, Input, Button, Message, Container, Loader } from 'semantic-ui-react';
 import { Profiles } from '/imports/api/profiles/Profiles';
 import { Roles } from 'meteor/alanning:roles';
 
@@ -124,39 +124,44 @@ class TopMenu extends React.Component {
             backgroundColor: 'mediumpurple' };
         const loginMessageStyle = { marginTop: "0px" };
         const verifyMessageStyle = { marginTop: "0px", marginBottom: "-15px" };
-        return (
-            <Container fluid>
-                <Menu style={menuStyle} attached="top" size="large" borderless fluid inverted>
-                    {this.renderHomeLink()}
-                    <Menu.Menu position="right">
-                        {this.renderUserDropdown()}
-                    </Menu.Menu>
-                </Menu>
-                {this.state.error === '' ? (
-                    ''
-                ) : (
-                    <Message
-                        error
-                        header="Log-in attempt unsuccessful."
-                        content={this.state.error}
-                        style={loginMessageStyle}
-                    />
-                )}
-                {this.props.currentUser === '' ? (
-                    '' // Don't print anything if their is no user logged in
-                ) : ( Meteor.user().emails[0].verified === true ? (
-                        '' // Don't print anything if the user's email is verified
+        if (this.props.ready) {
+            return (
+                <Container fluid>
+                    <Menu style={menuStyle} attached="top" size="large" borderless fluid inverted>
+                        {this.renderHomeLink()}
+                        <Menu.Menu position="right">
+                            {this.renderUserDropdown()}
+                        </Menu.Menu>
+                    </Menu>
+                    {this.state.error === '' ? (
+                        ''
                     ) : (
-                        <Message warning style={verifyMessageStyle}>
-                            <Message.Header>Verify your email address: {Meteor.user().emails[0].address}</Message.Header>
-                            <Message.Content>
-                                Check your email for verification link in order to use calendarG.
-                            </Message.Content>
-                        </Message>
-                    )
-                )}
-            </Container>
-        );
+                        <Message
+                            error
+                            header="Log-in attempt unsuccessful."
+                            content={this.state.error}
+                            style={loginMessageStyle}
+                        />
+                    )}
+                    {this.props.currentUser === '' ? (
+                        '' // Don't print anything if their is no user logged in
+                    ) : ( Meteor.user().emails[0].verified === true ? (
+                            '' // Don't print anything if the user's email is verified
+                        ) : (
+                            <Message warning style={verifyMessageStyle}>
+                                <Message.Header>Verify your email address: {Meteor.user().emails[0].address}</Message.Header>
+                                <Message.Content>
+                                    Check your email for verification link in order to use calendarG.
+                                </Message.Content>
+                            </Message>
+                        )
+                    )}
+                </Container>
+            );
+        }
+        else {
+            return (<Loader active>Loading</Loader>);
+        }
     }
 }
 

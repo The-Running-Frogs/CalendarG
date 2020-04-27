@@ -9,9 +9,12 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import VerifyEmail from '../pages/VerifyEmail';
 import UserHome from '../pages/UserHome';
+import AccountSettings from '../pages/AccountSettings';
 import Signup from '../pages/Signup';
 import NotFound from '../pages/NotFound';
 import Signout from '../pages/Signout';
+import ChangeEmail from "../pages/ChangeEmail";
+import ChangePassword from "../pages/ChangePassword";
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -32,6 +35,13 @@ class App extends React.Component {
                             (<Redirect to={{ pathname: '/', state: { from: props.location } }}/>
                             );
                     }}/>
+                    <Route path="/settings" component={(props) => {
+                        const isLogged = Meteor.userId() !== null;
+                        return isLogged ?
+                            (<AccountSettings {...props} />) :
+                            (<Redirect to={{ pathname: '/', state: { from: props.location } }}/>
+                            );
+                    }}/>
                     <Route path="/signout" component={(props) => {
                         const isLogged = Meteor.userId() !== null;
                         return isLogged ?
@@ -39,6 +49,8 @@ class App extends React.Component {
                             (<Redirect to={{ pathname: '/', state: { from: props.location } }}/>
                             );
                     }}/>
+                    <Route path="/changepw" component={ChangePassword}/>
+                    <Route path="/changeem" component={ChangeEmail}/>
                     <Route component={NotFound}/>
                 </Switch>
             </div>
