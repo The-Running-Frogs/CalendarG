@@ -11,8 +11,6 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { Accounts } from 'meteor/accounts-base';
 import { Profiles } from '/imports/api/profiles/Profiles';
 
-//import 'app/client/main.scss';
-
 class UserHome extends React.Component {
 
     /** Initialize state fields. */
