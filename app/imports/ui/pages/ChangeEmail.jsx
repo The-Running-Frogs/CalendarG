@@ -5,7 +5,7 @@ import { Accounts } from 'meteor/accounts-base';
 import { Profiles } from '/imports/api/profiles/Profiles';
 import { Redirect } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
-import {Loader, Form, Segment} from 'semantic-ui-react';
+import {Loader, Container, Form, Segment} from 'semantic-ui-react';
 import PropTypes from "prop-types";
 
 class ChangeEmail extends React.Component {
@@ -50,32 +50,36 @@ class ChangeEmail extends React.Component {
                 return (<Redirect to={{ pathname: '/home' }}/>);
             }
             else { // If the user's email is verified and is logged in, access their settings
+                const segmentStyle = { marginTop: "30px" };
                 return (
-                    <Segment>
-                        <Form onSubmit={this.submit}>
-                            {this.state.error === 'Email already exists.' ||
-                            this.state.error === 'Email that was entered is already associated with your account.'
-                                ? (
-                                    <Form.Input
-                                        required
-                                        error
-                                        name="email"
-                                        type="email"
-                                        label="New E-mail Address"
-                                        onChange={this.handleChange}
-                                    />
-                                ) : (
-                                    <Form.Input
-                                        required
-                                        name="email"
-                                        type="email"
-                                        label="New E-mail Address"
-                                        onChange={this.handleChange}
-                                    />
-                                )}
-                            <Form.Button fluid color="purple" content="Change E-mail"/>
-                        </Form>
-                    </Segment>
+                    <Container>
+                        <h1>Change Email</h1>
+                        <Segment style={segmentStyle}>
+                            <Form onSubmit={this.submit}>
+                                {this.state.error === 'Email already exists.' ||
+                                this.state.error === 'Email that was entered is already associated with your account.'
+                                    ? (
+                                        <Form.Input
+                                            required
+                                            error
+                                            name="email"
+                                            type="email"
+                                            label="New E-mail Address"
+                                            onChange={this.handleChange}
+                                        />
+                                    ) : (
+                                        <Form.Input
+                                            required
+                                            name="email"
+                                            type="email"
+                                            label="New E-mail Address"
+                                            onChange={this.handleChange}
+                                        />
+                                    )}
+                                <Form.Button fluid color="purple" content="Change E-mail"/>
+                            </Form>
+                        </Segment>
+                    </Container>
                 );
             }
         }

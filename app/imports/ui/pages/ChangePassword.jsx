@@ -5,7 +5,7 @@ import { Accounts } from 'meteor/accounts-base';
 import { Profiles } from '/imports/api/profiles/Profiles';
 import { Redirect } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
-import {Loader, Grid, Header, Container, Form, Checkbox, Segment, Progress, Message} from 'semantic-ui-react';
+import {Container, Loader, Form, Segment, Progress, Message} from 'semantic-ui-react';
 import PropTypes from "prop-types";
 
 class ChangePassword extends React.Component {
@@ -85,25 +85,28 @@ class ChangePassword extends React.Component {
                 return (<Redirect to={{ pathname: '/home' }}/>);
             }
             else { // If the user's email is verified and is logged in, access their settings
-                const messageStyle = { marginBottom: "30px"};
+                const messageStyle = { marginBottom: "30px" };
+                const segmentStyle = { marginTop: "20px" };
                 const buttonStyle = { marginBottom: "30px", marginTop: "30px" };
                 return (
-                    <Segment>
+                    <Container>
+                        <h1>Change Password</h1>
+                        <Segment style={segmentStyle}>
                             <Form onSubmit={this.submit}>
-                                    <Form.Input
-                                        required
-                                        name="current_password"
-                                        label="Current Password"
-                                        type="password"
-                                        onChange={this.handleChange}
-                                    />
-                                    <Form.Input
-                                        required
-                                        name="new_password"
-                                        label="New Password"
-                                        type="password"
-                                        onChange={this.passwordChange}
-                                    />
+                                <Form.Input
+                                    required
+                                    name="current_password"
+                                    label="Current Password"
+                                    type="password"
+                                    onChange={this.handleChange}
+                                />
+                                <Form.Input
+                                    required
+                                    name="new_password"
+                                    label="New Password"
+                                    type="password"
+                                    onChange={this.passwordChange}
+                                />
                                 {this.state.confirm_password === this.state.new_password ||
                                 this.state.confirm_password === '' ? (
                                     <Form.Input
@@ -126,19 +129,20 @@ class ChangePassword extends React.Component {
                                 <div id="password-progress-bar-area">
                                     <Progress style={buttonStyle} error id="password-progress-bar" percent={0} label='Empty' />
                                 </div>
-                            <Form.Button fluid color="purple" content="Change Password"/>
+                                <Form.Button fluid color="purple" content="Change Password"/>
                             </Form>
-                        {this.state.error === '' ? (
-                            ''
-                        ) : (
-                            <Message
-                                error
-                                style={messageStyle}
-                                header="Unable to change your password."
-                                content={this.state.error}
-                            />
-                        )}
-                    </Segment>
+                            {this.state.error === '' ? (
+                                ''
+                            ) : (
+                                <Message
+                                    error
+                                    style={messageStyle}
+                                    header="Unable to change your password."
+                                    content={this.state.error}
+                                />
+                            )}
+                        </Segment>
+                    </Container>
                 );
             }
         }

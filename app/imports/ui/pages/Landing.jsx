@@ -17,11 +17,11 @@ class Landing extends React.Component {
             return (<Redirect to={{ pathname: '/home' }}/>); // If user is regular user
         }
         /* Else print the landing page */
-        const imageStyle = { paddingBottom: '50px' };
+        const headerStyle = { paddingBottom: '20px' };
         return (
             <Grid verticalAlign='middle' textAlign='center' container>
                 <Grid.Column width={16}>
-                    <h1>Welcome to calendarG!</h1>
+                    <h1 style={headerStyle}>Welcome to calendarG!</h1>
                    <DynamicDescriptionMenu/>
                 </Grid.Column>
 
