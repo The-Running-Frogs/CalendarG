@@ -1,3 +1,5 @@
+/* Code written by Sophia Kim */
+
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Header } from 'semantic-ui-react';

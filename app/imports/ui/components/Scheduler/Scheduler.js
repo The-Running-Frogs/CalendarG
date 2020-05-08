@@ -1,3 +1,5 @@
+/* Code written by Keanu Williams */
+
 import React, { Component } from 'react';
 import 'dhtmlx-scheduler';
 import 'dhtmlx-scheduler/codebase/dhtmlxscheduler_material.css';

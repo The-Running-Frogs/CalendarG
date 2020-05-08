@@ -1,3 +1,5 @@
+/* Code written by Sophia Kim */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';

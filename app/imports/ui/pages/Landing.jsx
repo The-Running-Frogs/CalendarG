@@ -1,3 +1,5 @@
+/* Code written by Keanu Williams */
+
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Grid, Image } from 'semantic-ui-react';
@@ -45,6 +47,3 @@ export default withTracker(() => {
         currentUser: Meteor.user() ? Meteor.user().username : '',
     };
 })(Landing);
-
-
-

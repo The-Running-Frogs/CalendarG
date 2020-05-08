@@ -1,3 +1,5 @@
+/* Code written by Sophia Kim */
+
 import React from 'react';
 import { Icon, Menu } from 'semantic-ui-react';
 import {NavLink} from "react-router-dom";

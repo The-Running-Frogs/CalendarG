@@ -1,3 +1,5 @@
+/* Code written by Sophia Kim */
+
 import { Meteor } from 'meteor/meteor';
 import { Profiles } from '/imports/api/profiles/Profiles';
 

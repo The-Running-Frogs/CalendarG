@@ -1,3 +1,5 @@
+/* Code written by Keanu Williams */
+
 import React from 'react'
 import { Meteor } from 'meteor/meteor';
 import { Message, Container } from 'semantic-ui-react';

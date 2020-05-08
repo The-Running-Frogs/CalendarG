@@ -1,3 +1,5 @@
+/* Code written by Keanu Williams */
+
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Profiles } from '/imports/api/profiles/Profiles';

@@ -1,3 +1,5 @@
+/* Code written by Sophia Kim */
+
 import React, { Component } from 'react'
 import { Grid, Segment, Menu, Container } from 'semantic-ui-react'
 
